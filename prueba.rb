@@ -1,4 +1,4 @@
-file = File.open('alumnos.cvs', 'r').readlines
-data = []
-data.each { |line| data.push(line.split(', ').map(&:chomp)) }
-puts data
+file = File.open('alumnos.cvs', 'r')
+alumnos = file.readlines.map(&:chomp).map{ |lines| lines.split(', ')}
+file.close
+print alumnos
