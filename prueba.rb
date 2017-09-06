@@ -30,9 +30,7 @@ end
 def clean_alum(alumnos)
   clean_notes = 0
   alumnos.each do |alu|
-    if alu == 'A'
-      clean_notes += 1
-    end
+    clean_notes += 1 if alu == 'A'
   end
   clean_notes
 end
@@ -55,4 +53,34 @@ def approved(file_name, grade = 5)
   end
 end
 
-inasist('alumnos.cvs')
+puts 'Prueba Ruby SISTEMA DE ALUMNOS'
+puts 'Press Enter'
+opt = gets.chomp
+while opt != '4'
+  puts 'Ingresa 1 para generar un archivo con los nombres y promedios de los alumnos'
+  puts 'Ingresa 2 contabilizar el total de inasistencias de los alumnos'
+  puts 'Ingresa 3 cambia el criterio de evaluacion y muestra los aprovados'
+  puts 'Ingresa 4 para salir'
+  opt = gets.chomp
+  case  opt
+  when '1'
+    add_alumno('alumnos.cvs')
+    puts 'Se genero un archivo con los promedios'
+    puts '#######################################################'
+  when '2'
+    inasist('alumnos.cvs')
+    puts '#######################################################'
+  when '3'
+    puts 'Ingrese nota de aprobacion'
+    grade = gets.chomp.to_f
+    if grade.zero?
+      approved('alumnos.cvs')
+    else
+      approved('alumnos.cvs', grade)
+    end
+  when '4'
+    puts 'Adios'
+  else
+    'Ingresa un número del 1 al 4'
+  end
+end
