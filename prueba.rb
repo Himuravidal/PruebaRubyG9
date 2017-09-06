@@ -34,7 +34,7 @@ def clean_alum(alumnos)
       clean_notes += 1
     end
   end
-  return clean_notes
+  clean_notes
 end
 
 def inasist(file_name)
@@ -45,4 +45,14 @@ def inasist(file_name)
     puts " Don(a):  #{name} tuvo un total de #{no_asisstence} inasistencia"
   end
 end
+
+def approved(file_name, grade = 5)
+  alum = read_alum(file_name)
+  alum.each do |alu|
+    name = alu.shift
+    prom = prom_alum(alu)
+    puts "Don(a) : #{name} aprobo con nota #{prom}" if prom > grade
+  end
+end
+
 inasist('alumnos.cvs')
