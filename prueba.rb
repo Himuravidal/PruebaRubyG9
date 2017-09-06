@@ -27,4 +27,22 @@ def add_alumno(file_name)
   end
 end
 
-add_alumno('alumnos.cvs')
+def clean_alum(alumnos)
+  clean_notes = 0
+  alumnos.each do |alu|
+    if alu == 'A'
+      clean_notes += 1
+    end
+  end
+  return clean_notes
+end
+
+def inasist(file_name)
+  alum = read_alum(file_name)
+  alum.each do |alu|
+    name = alu.shift
+    no_asisstence = clean_alum(alu)
+    puts " Don(a):  #{name} tuvo un total de #{no_asisstence} inasistencia"
+  end
+end
+inasist('alumnos.cvs')
