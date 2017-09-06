@@ -1,8 +1,8 @@
 def read_alum(file_name)
   file = File.open(file_name, 'r')
-  alumnos = file.readlines.map(&:chomp).map { |lines| lines.split(', ') }
+  alum = file.readlines.map(&:chomp).map { |lines| lines.split(', ') }
   file.close
-  alumnos
+  alum
 end
 
 def prom_alum(alum)
@@ -19,8 +19,8 @@ def prom_alum(alum)
 end
 
 def add_alumno(file_name)
-  alumnos = read_alum(file_name)
-  alumnos.each do |alumno|
+  alum = read_alum(file_name)
+  alum.each do |alumno|
     alum_name = alumno.shift
     prom = prom_alum(alumno)
     File.open('promedios.txt', 'a') { |file| file.puts" #{alum_name} : su promedio es #{prom}" }
